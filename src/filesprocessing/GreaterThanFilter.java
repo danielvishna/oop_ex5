@@ -7,7 +7,7 @@ import java.util.List;
 public class GreaterThanFilter implements IFilter<String> {
 
 	@Override
-	public File[] filterFiles(File dir, List<String> parameters) throws Warning {
+	public List<File> filterFiles(File dir, List<String> parameters) throws Warning {
 
 		File [] files = dir.listFiles();
 		double size = Double.parseDouble(parameters.get(0));
@@ -24,6 +24,8 @@ public class GreaterThanFilter implements IFilter<String> {
 				result = true;
 			}
 		}
+		if (files == null)
+			return null;
 		for(File f: files) {
 			if(f.isFile() && result && f.length() < size) {
 				fileLinkedList.add(f);
@@ -33,7 +35,7 @@ public class GreaterThanFilter implements IFilter<String> {
 			}
 
 		}
-		return fileLinkedList.toArray(new File[0]);
+		return fileLinkedList;
 	}
 
 }

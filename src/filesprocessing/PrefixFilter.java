@@ -6,7 +6,7 @@ import java.util.List;
 
 public class PrefixFilter implements IFilter<String>{
 	@Override
-	public File[] filterFiles(File dir, List<String> parameters) throws Warning {
+	public List<File> filterFiles(File dir, List<String> parameters) throws Warning {
 		String isNot;
 		boolean result = false;
 		File [] files = dir.listFiles();
@@ -21,6 +21,8 @@ public class PrefixFilter implements IFilter<String>{
 				throw new Warning();
 			}
 		}
+		if (files == null)
+			return null;
 		for(File f: files) {
 			if(f.isFile() && !f.getName().startsWith(nameFilter) && result) {
 				fileLinkedList.add(f);
@@ -30,6 +32,6 @@ public class PrefixFilter implements IFilter<String>{
 			}
 
 		}
-		return fileLinkedList.toArray(new File[0]);
+		return fileLinkedList;
 	}
 }

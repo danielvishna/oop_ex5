@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ExecutableFilter implements IFilter<String>{
 	@Override
-	public File[] filterFiles(File dir, List<String> parameters) throws Warning {
+	public List<File> filterFiles(File dir, List<String> parameters) throws Warning {
 		String isNot;
 		boolean result = false;
 		File [] files = dir.listFiles();
@@ -35,6 +35,6 @@ public class ExecutableFilter implements IFilter<String>{
 			}
 
 		}
-		return fileLinkedList.toArray(new File[0]);
+		return fileLinkedList;
 	}
 }
