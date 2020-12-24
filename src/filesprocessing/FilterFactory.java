@@ -7,6 +7,8 @@ public class FilterFactory {
 			return new GreaterThanFilter();
 		case "smaller_than":
 			return new SmallerThanFilter();
+		case "between":
+			return new BetweenFilter();
 		default:
 			return null;
 		}

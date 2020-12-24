@@ -163,7 +163,7 @@ public class DirectoryProcessor {
 //			System.err.println("Couldn’t copy file");
 //		} // No need to close streams! (AutoCloseable interface rocks!)
 //		Reader fileCommend = new Reader(sourcedir);
-		int count = 1;
+		int lineCount = 1;
 		File [] files = null;
 		BufferedReader reader;
 		try {
@@ -173,13 +173,21 @@ public class DirectoryProcessor {
 				if(!line.equals("FILTER")){
 					System.err.println("Invalid file");
 				}
+				lineCount ++;
 				line = reader.readLine();
 				List<String> parms = Utils.getFilterParameters(line);
 				IFilter<String> filter = FilterFactory.createFilter(parms.get(0));
-				files = filter.filterFiles(dir, parms.subList(1,parms.size()));
+				try {
+					files = filter.filterFiles(dir, parms.subList(1, parms.size()));
+				}
+				catch (Warning ex){
+					System.err.println(String.format("Warning in line %s", lineCount));
+					files = dir.listFiles();
+					//todo add next the hendel of all
+				}
 				// read next line
 				line = reader.readLine();
-				count ++;
+				lineCount ++;
 			}
 			reader.close();
 		} catch (IOException e) {

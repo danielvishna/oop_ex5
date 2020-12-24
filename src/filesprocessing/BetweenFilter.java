@@ -4,13 +4,13 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SmallerThanFilter implements IFilter<String> {
-
+public class BetweenFilter implements IFilter<String>{
 	@Override
 	public File[] filterFiles(File dir, List<String> parameters) throws Warning {
 		File [] files = dir.listFiles();
-		double size = Double.parseDouble(parameters.get(0));
-		if (size < 0){
+		double low = Double.parseDouble(parameters.get(0));
+		double greater = Double.parseDouble(parameters.get(0));
+		if (low < 0 || low > greater || greater < 0){
 			throw new Warning();
 		}
 		String isNot = "";
@@ -26,10 +26,10 @@ public class SmallerThanFilter implements IFilter<String> {
 			}
 		}
 		for(File f: files) {
-			if(result && f.length() > size && f.isFile()) {
+			if(result && (f.length() < low || f.length() > greater )&& f.isFile()) {
 				fileLinkedList.add(f);
 			}
-			else if (f.length() <= size && f.isFile()) {
+			else if (low <= f.length() && f.length() <= greater && f.isFile()) {
 				fileLinkedList.add(f);
 			}
 

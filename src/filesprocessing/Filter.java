@@ -9,7 +9,7 @@ public class Filter {
 		this.filter = filter;
 	}
 
-	public File [] doFilter(File dir, List<String> parameters){
+	public File [] doFilter(File dir, List<String> parameters) throws Warning {
 		return this.filter.filterFiles(dir, parameters);
 	}
 }
