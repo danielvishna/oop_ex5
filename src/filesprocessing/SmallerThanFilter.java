@@ -13,7 +13,7 @@ public class SmallerThanFilter implements IFilter<String> {
 		if (size < 0){
 			throw new Warning();
 		}
-		String isNot = "";
+		String isNot;
 		boolean result = false;
 		LinkedList<File> fileLinkedList = new LinkedList<>();
 		if (parameters.size() == 2) {
@@ -29,7 +29,7 @@ public class SmallerThanFilter implements IFilter<String> {
 			if(result && f.length() > size && f.isFile()) {
 				fileLinkedList.add(f);
 			}
-			else if (f.length() <= size && f.isFile()) {
+			else if (!result && f.length() <= size && f.isFile()) {
 				fileLinkedList.add(f);
 			}
 

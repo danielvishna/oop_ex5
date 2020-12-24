@@ -9,6 +9,14 @@ public class FilterFactory {
 			return new SmallerThanFilter();
 		case "between":
 			return new BetweenFilter();
+		case "file":
+			return new FileFilter();
+		case "contains":
+			return new ContainsFilter();
+		case "prefix":
+			return new PrefixFilter();
+		case "suffix":
+			return new SuffixFilter();
 		default:
 			return null;
 		}

@@ -4,7 +4,8 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-public class FileFilter implements IFilter<String> {
+public class SuffixFilter implements IFilter<String>{
+
 	@Override
 	public File[] filterFiles(File dir, List<String> parameters) throws Warning {
 		String isNot;
@@ -21,13 +22,11 @@ public class FileFilter implements IFilter<String> {
 				throw new Warning();
 			}
 		}
-		if (files == null)
-			return null;//todo may not be the best way
 		for(File f: files) {
-			if(!f.getName().equals(nameFilter) && result) {
+			if(!f.getName().endsWith(nameFilter) && result) {
 				fileLinkedList.add(f);
 			}
-			else if (!result && f.getName().equals(nameFilter)) {
+			else if (f.getName().endsWith(nameFilter) && !result) {
 				fileLinkedList.add(f);
 			}
 

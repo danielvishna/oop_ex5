@@ -9,15 +9,15 @@ public class BetweenFilter implements IFilter<String>{
 	public File[] filterFiles(File dir, List<String> parameters) throws Warning {
 		File [] files = dir.listFiles();
 		double low = Double.parseDouble(parameters.get(0));
-		double greater = Double.parseDouble(parameters.get(0));
+		double greater = Double.parseDouble(parameters.get(1));
 		if (low < 0 || low > greater || greater < 0){
 			throw new Warning();
 		}
-		String isNot = "";
+		String isNot;
 		boolean result = false;
 		LinkedList<File> fileLinkedList = new LinkedList<>();
-		if (parameters.size() == 2) {
-			isNot = parameters.get(1);
+		if (parameters.size() == 3) {
+			isNot = parameters.get(2);
 			if (isNot.equals("NOT")) {
 				result = true;
 			}
@@ -29,7 +29,7 @@ public class BetweenFilter implements IFilter<String>{
 			if(result && (f.length() < low || f.length() > greater )&& f.isFile()) {
 				fileLinkedList.add(f);
 			}
-			else if (low <= f.length() && f.length() <= greater && f.isFile()) {
+			else if (!result && low <= f.length() && f.length() <= greater && f.isFile()) {
 				fileLinkedList.add(f);
 			}
 
