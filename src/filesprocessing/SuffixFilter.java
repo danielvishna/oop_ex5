@@ -23,10 +23,10 @@ public class SuffixFilter implements IFilter<String>{
 			}
 		}
 		for(File f: files) {
-			if(!f.getName().endsWith(nameFilter) && result) {
+			if(f.isFile() && !f.getName().endsWith(nameFilter) && result) {
 				fileLinkedList.add(f);
 			}
-			else if (f.getName().endsWith(nameFilter) && !result) {
+			else if (f.isFile() && f.getName().endsWith(nameFilter) && !result) {
 				fileLinkedList.add(f);
 			}
 

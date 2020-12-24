@@ -17,6 +17,14 @@ public class FilterFactory {
 			return new PrefixFilter();
 		case "suffix":
 			return new SuffixFilter();
+		case "writable":
+			return new WritableFilter();
+		case "executable":
+			return new ExecutableFilter();
+		case "hidden":
+			return new HiddenFilter();
+		case "all":
+			return new AllFilter();
 		default:
 			return null;
 		}

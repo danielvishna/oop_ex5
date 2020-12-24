@@ -26,10 +26,10 @@ public class BetweenFilter implements IFilter<String>{
 			}
 		}
 		for(File f: files) {
-			if(result && (f.length() < low || f.length() > greater )&& f.isFile()) {
+			if( f.isFile() && result && (f.length() < low || f.length() > greater )) {
 				fileLinkedList.add(f);
 			}
-			else if (!result && low <= f.length() && f.length() <= greater && f.isFile()) {
+			else if (f.isFile() && !result && low <= f.length() && f.length() <= greater) {
 				fileLinkedList.add(f);
 			}
 

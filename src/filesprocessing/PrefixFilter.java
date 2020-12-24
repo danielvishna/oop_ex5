@@ -22,10 +22,10 @@ public class PrefixFilter implements IFilter<String>{
 			}
 		}
 		for(File f: files) {
-			if(!f.getName().startsWith(nameFilter) && result) {
+			if(f.isFile() && !f.getName().startsWith(nameFilter) && result) {
 				fileLinkedList.add(f);
 			}
-			else if (f.getName().startsWith(nameFilter) && !result) {
+			else if (f.isFile() && f.getName().startsWith(nameFilter) && !result) {
 				fileLinkedList.add(f);
 			}
 

@@ -4,17 +4,16 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SmallerThanFilter implements IFilter<String> {
-
+public class ExecutableFilter implements IFilter<String>{
 	@Override
 	public File[] filterFiles(File dir, List<String> parameters) throws Warning {
-		File [] files = dir.listFiles();
-		double size = Double.parseDouble(parameters.get(0));
-		if (size < 0){
-			throw new Warning();
-		}
 		String isNot;
 		boolean result = false;
+		File [] files = dir.listFiles();
+		String nameFilter = parameters.get(0);
+		if (!nameFilter.equals("YES") && !nameFilter.equals("NO")){
+			throw new Warning();
+		}
 		LinkedList<File> fileLinkedList = new LinkedList<>();
 		if (parameters.size() == 2) {
 			isNot = parameters.get(1);
@@ -25,11 +24,13 @@ public class SmallerThanFilter implements IFilter<String> {
 				throw new Warning();
 			}
 		}
+		if (files == null)
+			return null;//todo may not be the best way
 		for(File f: files) {
-			if(f.isFile() && result && f.length() > size) {
+			if(f.isFile() && !f.canExecute() && result) {
 				fileLinkedList.add(f);
 			}
-			else if (f.isFile() && !result && f.length() <= size) {
+			else if (f.isFile() && !result && f.canExecute()) {
 				fileLinkedList.add(f);
 			}
 

@@ -25,10 +25,10 @@ public class GreaterThanFilter implements IFilter<String> {
 			}
 		}
 		for(File f: files) {
-			if(result && f.length() < size && f.isFile()) {
+			if(f.isFile() && result && f.length() < size) {
 				fileLinkedList.add(f);
 			}
-			else if (!result && f.length() >= size && f.isFile()) {
+			else if (f.isFile() && !result && f.length() >= size) {
 				fileLinkedList.add(f);
 			}
 

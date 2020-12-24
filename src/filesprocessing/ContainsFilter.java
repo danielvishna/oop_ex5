@@ -23,10 +23,10 @@ public class ContainsFilter implements IFilter<String> {
 			}
 		}
 		for(File f: files) {
-			if(!f.getName().contains(nameFilter) && result) {
+			if(f.isFile() && !f.getName().contains(nameFilter) && result) {
 				fileLinkedList.add(f);
 			}
-			else if (f.getName().contains(nameFilter) && !result) {
+			else if (f.isFile() && f.getName().contains(nameFilter) && !result) {
 				fileLinkedList.add(f);
 			}
 
