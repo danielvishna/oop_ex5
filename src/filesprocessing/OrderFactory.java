@@ -1,7 +1,7 @@
 package filesprocessing;
 
 public class OrderFactory {
-	public static ICompere createOrder(String line) throws Warning {
+	public static ICompere createOrder(String line){
 		switch (line) {
 		case "abs":
 			return new AbsCompere();
@@ -10,7 +10,7 @@ public class OrderFactory {
 		case "size":
 			return new SizeCompere();
 		default:
-			throw new Warning();
+			return null;
 		}
 	}
 }

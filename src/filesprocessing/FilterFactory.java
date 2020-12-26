@@ -1,7 +1,7 @@
 package filesprocessing;
 
 public class FilterFactory {
-	public static IFilter<String> createFilter(String line) throws Warning {
+	public static IFilter<String> createFilter(String line) {
 		switch (line) {
 		case "greater_than":
 			return new GreaterThanFilter();
@@ -26,7 +26,8 @@ public class FilterFactory {
 		case "all":
 			return new AllFilter();
 		default:
-			throw new Warning();
+			return null;
+//			throw new Warning();
 		}
 
 	}
