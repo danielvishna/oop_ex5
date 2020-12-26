@@ -78,26 +78,34 @@ public class FileOrder {
 	// merge()
 	void sort(File[] arr, int l, int r, ICompere compere, List<String> parameters, int lineCount)
 	{
-		try {
-			if (l < r) {
-				// Find the middle point
-				int m = (l + r) / 2;
-
-				// Sort first and second halves
-				sort(arr, l, m, compere, parameters, lineCount);
-				sort(arr, m + 1, r, compere, parameters, lineCount);
-
-				// Merge the sorted halves
-				merge(arr, l, m, r, compere, parameters);
-			}
-		}
-		catch (Warning e){
+		if(compere == null){
 			System.err.printf("Warning in line %s%n", lineCount);
-			String line = "abs\n";
+			String line = "abs";
 			List<String> parms = Utils.getFilterParameters(line);
 			AbsCompere defoult = new AbsCompere();
-			sort(arr, 0, arr.length,defoult, parms.subList(1, parms.size()), lineCount);
+			sort(arr, 0, arr.length - 1,defoult, parms.subList(1, parms.size()), lineCount);
+		}
+		else {
+			try {
+				if (l < r) {
+					// Find the middle point
+					int m = (l + r) / 2;
 
+					// Sort first and second halves
+					sort(arr, l, m, compere, parameters, lineCount);
+					sort(arr, m + 1, r, compere, parameters, lineCount);
+
+					// Merge the sorted halves
+					merge(arr, l, m, r, compere, parameters);
+				}
+			} catch (Warning e) {
+				System.err.printf("Warning in line %s%n", lineCount);
+				String line = "abs";
+				List<String> parms = Utils.getFilterParameters(line);
+				AbsCompere defoult = new AbsCompere();
+				sort(arr, 0, arr.length - 1, defoult, parms.subList(1, parms.size()), lineCount);
+
+			}
 		}
 	}
 }
