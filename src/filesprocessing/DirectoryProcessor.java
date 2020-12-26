@@ -36,14 +36,13 @@ public class DirectoryProcessor {
 				}
 				catch (Warning ex){
 					System.err.printf("Warning in line %s%n", lineCount);
-					if(dir.listFiles() == null) {
+					if(dir.listFiles() != null) {
 						for (File f : dir.listFiles()) {
 							if (f.isFile()) {
 								files.add(f);
 							}
 						}
 					}
-					//todo add next the hendel of all
 				}
 				// read next line
 				lineCount ++;
