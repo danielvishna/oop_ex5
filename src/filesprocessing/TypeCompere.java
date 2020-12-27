@@ -14,7 +14,7 @@ public class TypeCompere implements ICompere{
 		}
 		int fileTwoLastIndexOfDot = file2.getName().lastIndexOf('.');
 		if (fileTwoLastIndexOfDot > 0) {
-			extension2 = file1.getName().substring(fileTwoLastIndexOfDot+1);
+			extension2 = file2.getName().substring(fileTwoLastIndexOfDot+1);
 		}
 		if(extension1.compareTo(extension2) != 0){
 			return extension1.compareTo(extension2);

@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+import static filesprocessing.Utils.BytSize;
+
 public class GreaterThanFilter implements IFilter<String> {
 
 	@Override
@@ -19,18 +21,17 @@ public class GreaterThanFilter implements IFilter<String> {
 		LinkedList<File> fileLinkedList = new LinkedList<>();
 		if (parameters.size() == 2) {
 			isNot = parameters.get(1);
-			//todo resise exsepsion if not equal NOT
 			if (isNot.equals("NOT")) {
 				result = true;
 			}
 		}
 		if (files == null)
-			return null;
+			return fileLinkedList;
 		for(File f: files) {
-			if(f.isFile() && result && f.length() < size) {
+			if(f.isFile() && result && (double) f.length() / BytSize <= size ) {
 				fileLinkedList.add(f);
 			}
-			else if (f.isFile() && !result && f.length() >= size) {
+			else if (f.isFile() && !result && ((double)f.length() / BytSize > size)) {
 				fileLinkedList.add(f);
 			}
 

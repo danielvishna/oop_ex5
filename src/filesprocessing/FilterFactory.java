@@ -27,7 +27,6 @@ public class FilterFactory {
 			return new AllFilter();
 		default:
 			return null;
-//			throw new Warning();
 		}
 
 	}

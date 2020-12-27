@@ -1,7 +1,9 @@
 package filesprocessing;
 
-import java.io.*;
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -25,7 +27,8 @@ public class DirectoryProcessor {
 			reader = new BufferedReader(new FileReader(args[1]));
 			String line = reader.readLine();// the filter
 			if (line == null) {
-				throw new ErrorMissSubsection(const_filter);
+				System.out.print("");
+				return;
 			}
 			while (line != null) {
 				if (!line.equals(const_filter)) {
@@ -53,7 +56,7 @@ public class DirectoryProcessor {
 					line = reader.readLine();
 					lineCount++;
 				} else {
-					curntComend.setOrder("");
+					curntComend.setOrder(null);
 					curntComend.setLineOrder(-1);
 				}
 				Command tmp_comend = new Command(curntComend);
@@ -69,7 +72,7 @@ public class DirectoryProcessor {
 						.filterFiles(dir, filterParameters.subList(1, filterParameters.size()),
 									 command.getLineFilter());
 				String orderLine = command.getOrder();
-				if (orderLine.equals("")) {
+				if (orderLine == null) {
 					orderLine = "abs";
 				}
 				List<String> paramsOrder = Utils.getFilterParameters(orderLine);
@@ -89,7 +92,8 @@ public class DirectoryProcessor {
 			System.err.println(e.getMessage());
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println("ERROR: can't open this file");
+
 		}
 
 

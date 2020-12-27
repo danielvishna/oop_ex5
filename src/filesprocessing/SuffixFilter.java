@@ -11,7 +11,13 @@ public class SuffixFilter implements IFilter<String>{
 		String isNot;
 		boolean result = false;
 		File [] files = dir.listFiles();
-		String nameFilter = parameters.get(0);
+		String nameFilter;
+		if(parameters.size() == 0){
+			nameFilter = "";
+		}
+		else {
+			nameFilter = parameters.get(0);
+		}
 		LinkedList<File> fileLinkedList = new LinkedList<>();
 		if (parameters.size() == 2) {
 			isNot = parameters.get(1);
@@ -23,7 +29,7 @@ public class SuffixFilter implements IFilter<String>{
 			}
 		}
 		if (files == null)
-			return null;
+			return fileLinkedList;
 		for(File f: files) {
 			if(f.isFile() && !f.getName().endsWith(nameFilter) && result) {
 				fileLinkedList.add(f);

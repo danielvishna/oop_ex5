@@ -22,7 +22,7 @@ public class PrefixFilter implements IFilter<String>{
 			}
 		}
 		if (files == null)
-			return null;
+			return fileLinkedList;
 		for(File f: files) {
 			if(f.isFile() && !f.getName().startsWith(nameFilter) && result) {
 				fileLinkedList.add(f);

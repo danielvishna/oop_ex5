@@ -26,13 +26,21 @@ public class WritableFilter implements IFilter<String>{
 			}
 		}
 		if (files == null)
-			return null;//todo may not be the best way
+			return fileLinkedList;
 		for(File f: files) {
-			if(f.isFile() && !f.canWrite() && result) {
-				fileLinkedList.add(f);
+			if(nameFilter.equals("YES")) {
+				if (f.isFile() && !f.canWrite() && result) {
+					fileLinkedList.add(f);
+				} else if (f.isFile() && !result && f.canWrite()) {
+					fileLinkedList.add(f);
+				}
 			}
-			else if (f.isFile() && !result && f.canWrite()) {
-				fileLinkedList.add(f);
+			else {
+				if (f.isFile() && f.canWrite() && result) {
+					fileLinkedList.add(f);
+				} else if (f.isFile() && !result && !f.canWrite()) {
+					fileLinkedList.add(f);
+				}
 			}
 
 		}

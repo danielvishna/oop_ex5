@@ -1,7 +1,6 @@
 package filesprocessing;
 
 import java.io.File;
-import java.util.List;
 
 public class Compere {
 	private final ICompere compere;

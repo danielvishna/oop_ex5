@@ -15,15 +15,12 @@ public class AllFilter implements IFilter<String>{
 			if (isNot.equals("NOT")) {
 				result = true;
 			}
-//			else {
-//				throw new Warning();
-//			}
 		}
 		LinkedList<File> fileLinkedList = new LinkedList<>();
 		if(!result) {
 
 			if (files == null)
-				return null;//todo may not be the best way
+				return fileLinkedList;
 			for (File f : files) {
 				if (f.isFile()) {
 					fileLinkedList.add(f);

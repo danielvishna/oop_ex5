@@ -7,7 +7,7 @@ public class Command {
 	private int lineOrder;
 	public Command() {
 		this.filter = "";
-		this.order = "";
+		this.order = null;
 		this.lineFilter = 0;
 		this.lineOrder = 0;
 	}

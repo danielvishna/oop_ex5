@@ -1,0 +1,31 @@
+daniel.vishna
+
+
+
+=============================
+=      File description     =
+=============================
+Book.java - implements the Library class.
+Library.java - implements the Library class.
+Patron.java - implements the Patron class.
+
+
+
+=============================
+=          Design           =
+=============================
+In general I implement 3 different class that represent 3 different object.
+There connection between the class in that way Library has contain the patrons and books.
+each class is stand alon and can use any other calls that implement the same API.
+
+
+=============================
+=  Implementation details   =
+=============================
+In the Library I chose to implement 3 arrays that store the Books,Patrons and how mach books each
+patron is borrow from the library.
+
+=============================
+=    Answers to questions   =
+=============================
+

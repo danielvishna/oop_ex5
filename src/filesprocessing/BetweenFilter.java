@@ -3,6 +3,8 @@ package filesprocessing;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import static filesprocessing.Utils.BytSize;
+
 
 public class BetweenFilter implements IFilter<String>{
 	@Override
@@ -26,12 +28,14 @@ public class BetweenFilter implements IFilter<String>{
 			}
 		}
 		if (files == null)
-			return null;
+			return fileLinkedList;
 		for(File f: files) {
-			if( f.isFile() && result && (f.length() < low || f.length() > greater )) {
+			if( f.isFile() && result && ((double) f.length() / BytSize < low ||
+										 (double) f.length() / BytSize > greater )) {
 				fileLinkedList.add(f);
 			}
-			else if (f.isFile() && !result && low <= f.length() && f.length() <= greater) {
+			else if (f.isFile() && !result && low <= (double) f.length() / BytSize &&
+					 (double) f.length() / BytSize <= greater) {
 				fileLinkedList.add(f);
 			}
 

@@ -22,7 +22,7 @@ public class FileFilter implements IFilter<String> {
 			}
 		}
 		if (files == null)
-			return null;//todo may not be the best way
+			return fileLinkedList;
 		for(File f: files) {
 			if(f.isFile() && !f.getName().equals(nameFilter) && result) {
 				fileLinkedList.add(f);

@@ -3,6 +3,7 @@ package filesprocessing;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import static filesprocessing.Utils.BytSize;
 
 public class SmallerThanFilter implements IFilter<String> {
 
@@ -26,12 +27,12 @@ public class SmallerThanFilter implements IFilter<String> {
 			}
 		}
 		if (files == null)
-			return null;
+			return fileLinkedList;
 		for(File f: files) {
-			if(f.isFile() && result && f.length() > size) {
+			if(f.isFile() && result && (double) f.length() / BytSize  >= size) {
 				fileLinkedList.add(f);
 			}
-			else if (f.isFile() && !result && f.length() <= size) {
+			else if (f.isFile() && !result && (double) f.length()  / BytSize < size) {
 				fileLinkedList.add(f);
 			}
 
