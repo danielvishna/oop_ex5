@@ -1,8 +1,13 @@
 package filesprocessing;
 
 public class FilterFactory {
-	public static IFilter<String> createFilter(String line) {
-		switch (line) {
+	/**
+	 * Filter Factory create the filter object that filter thr files at the dir
+	 * @param filter the given filter
+	 * @return IFilter of the wonted filter
+	 */
+	public static IFilter<String> createFilter(String filter) {
+		switch (filter) {
 		case "greater_than":
 			return new GreaterThanFilter();
 		case "smaller_than":
@@ -10,7 +15,7 @@ public class FilterFactory {
 		case "between":
 			return new BetweenFilter();
 		case "file":
-			return new FileFilter();
+			return new FileFilterName();
 		case "contains":
 			return new ContainsFilter();
 		case "prefix":

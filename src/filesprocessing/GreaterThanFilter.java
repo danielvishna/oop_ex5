@@ -10,7 +10,9 @@ public class GreaterThanFilter implements IFilter<String> {
 
 	@Override
 	public List<File> filterFiles(File dir, List<String> parameters) throws Warning {
-
+		if(parameters.size() < 1 || parameters.size() > 2){
+			throw new Warning();
+		}
 		File [] files = dir.listFiles();
 		double size = Double.parseDouble(parameters.get(0));
 		if (size < 0){
@@ -23,6 +25,9 @@ public class GreaterThanFilter implements IFilter<String> {
 			isNot = parameters.get(1);
 			if (isNot.equals("NOT")) {
 				result = true;
+			}
+			else {
+				throw new Warning();
 			}
 		}
 		if (files == null)

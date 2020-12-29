@@ -4,7 +4,17 @@ import java.io.File;
 import java.util.List;
 
 public class FileOrder {
-	private void merge(File[] arr, int l, int m, int r, ICompere compere,  List<String> parameters)
+	/**
+	 * merge to part of array to one sort part
+	 * @param arr : array of Files
+	 * @param l
+	 * @param m
+	 * @param r
+	 * @param compere
+	 * @param parameters
+	 * @throws Warning
+	 */
+	private void merge(File[] arr, int l, int m, int r, ICompere compere,  List<String> parameters)//todo
 			throws Warning {
 		int i1 = m - l + 1;
 		int i2 = r - m;

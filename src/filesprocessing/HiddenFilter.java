@@ -7,6 +7,10 @@ import java.util.List;
 public class HiddenFilter implements IFilter<String>{
 	@Override
 	public List <File> filterFiles(File dir, List<String> parameters) throws Warning {
+		if(parameters.size() < 1 || parameters.size() > 2){
+			throw new Warning();
+		}
+		int size = 0;
 		String isNot;
 		boolean result = false;
 		File [] files = dir.listFiles();
@@ -18,7 +22,13 @@ public class HiddenFilter implements IFilter<String>{
 		if (parameters.size() == 2) {
 			isNot = parameters.get(1);
 			if (isNot.equals("NOT")) {
-				result = true;
+				if(nameFilter.equals("YES")){
+					nameFilter = "NO";
+				}
+				else {
+					nameFilter = "YES";
+				}
+				//				result = true;
 			}
 			else {
 				throw new Warning();
@@ -26,23 +36,44 @@ public class HiddenFilter implements IFilter<String>{
 		}
 		if (files == null)
 			return fileLinkedList;
-		for(File f: files) {
-			if(nameFilter.equals("YES")) {
-				if (f.isFile() && !f.isHidden() && result) {
-					fileLinkedList.add(f);
-				} else if (f.isFile() && !result && f.isHidden()) {
+		if(nameFilter.equals("YES")){
+			for(File f: files) {
+				if (f.isFile() && f.isHidden()) {
 					fileLinkedList.add(f);
 				}
 			}
-			else {
-				if (f.isFile() && f.isHidden() && result) {
-					fileLinkedList.add(f);
-				} else if (f.isFile() && !result && !f.isHidden()) {
-					fileLinkedList.add(f);
-				}
-			}
-
 		}
+		else{
+			for(File f: files) {
+				if (f.isFile() && !f.isHidden()) {
+					fileLinkedList.add(f);
+				}
+			}
+		}
+//		for(File f: files) {
+//			if(nameFilter.equals("YES")) {
+//				if (f.isFile() && !f.isHidden() && result) {
+//					fileLinkedList.add(f);
+//					size ++;
+//				}
+//				else if (f.isFile() && !result && f.isHidden()) {
+//					fileLinkedList.add(f);
+//					size ++;
+//				}
+//			}
+//			else {
+//				if (f.isFile() && f.isHidden() && result) {
+//					fileLinkedList.add(f);
+//					size ++;
+//				}
+//				else if (f.isFile() && !result && !f.isHidden()) {
+//					fileLinkedList.add(f);
+//					size ++;
+//				}
+//			}
+//
+//		}
+//		assert size == fileLinkedList.size();
 		return fileLinkedList;
 	}
 }

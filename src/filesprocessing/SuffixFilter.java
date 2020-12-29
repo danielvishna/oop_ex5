@@ -8,6 +8,9 @@ public class SuffixFilter implements IFilter<String>{
 
 	@Override
 	public List<File> filterFiles(File dir, List<String> parameters) throws Warning {
+		if(parameters.size() < 1 || parameters.size() > 2){//todo may "" good suffix
+			throw new Warning();
+		}
 		String isNot;
 		boolean result = false;
 		File [] files = dir.listFiles();

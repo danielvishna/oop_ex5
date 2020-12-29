@@ -9,6 +9,9 @@ public class SmallerThanFilter implements IFilter<String> {
 
 	@Override
 	public List <File> filterFiles(File dir, List<String> parameters) throws Warning {
+		if(parameters.size() < 1 || parameters.size() > 2){
+			throw new Warning();
+		}
 		File [] files = dir.listFiles();
 		double size = Double.parseDouble(parameters.get(0));
 		if (size < 0){

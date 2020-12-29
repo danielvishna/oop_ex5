@@ -11,11 +11,12 @@ import java.util.Queue;
 public class DirectoryProcessor {
 	static final String const_filter = "FILTER";
 	static final String const_order = "ORDER";
-	//todo check the case of #NOT/#REVERS
+	static final int numOfArgs = 2;
+	static final String DEFOULT_ORDER = "abs";
 
 	public static void main(String[] args) {
 		try {
-			if (args.length != 2) // not sadisite args
+			if (args.length != numOfArgs) // not sadisite args
 			{
 				throw new UsageError();
 			}
@@ -32,7 +33,7 @@ public class DirectoryProcessor {
 			}
 			while (line != null) {
 				if (!line.equals(const_filter)) {
-					throw new SubsectionError();// todo check if this is the curect excipen
+					throw new SubsectionError();
 				}
 				lineCount++;
 				line = reader.readLine(); // the filter parm
@@ -50,7 +51,7 @@ public class DirectoryProcessor {
 				}
 				lineCount++;
 				line = reader.readLine(); // the order parmeters / FILTER
-				if (line != null && !line.equals("FILTER")) {
+				if (line != null && !line.equals(const_filter)) {
 					curntComend.setOrder(line);
 					curntComend.setLineOrder(lineCount);
 					line = reader.readLine();
@@ -65,6 +66,8 @@ public class DirectoryProcessor {
 			reader.close();
 			while (commands.size() > 0){
 				Command command = commands.peek();
+//				System.out.println(command.getFilter());
+//				System.out.println(command.getOrder());
 				List<String> filterParameters = Utils.getFilterParameters(command.getFilter());
 				IFilter<String> Ifilter = FilterFactory.createFilter(filterParameters.get(0));
 				Filter filter = new Filter(Ifilter);
@@ -73,7 +76,7 @@ public class DirectoryProcessor {
 									 command.getLineFilter());
 				String orderLine = command.getOrder();
 				if (orderLine == null) {
-					orderLine = "abs";
+					orderLine = DEFOULT_ORDER;
 				}
 				List<String> paramsOrder = Utils.getFilterParameters(orderLine);
 				FileOrder order = new FileOrder();

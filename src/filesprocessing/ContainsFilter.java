@@ -12,6 +12,9 @@ public class ContainsFilter implements IFilter<String> {
 		boolean result = false;
 		File [] files = dir.listFiles();
 		String nameFilter;
+		if(parameters.size() > 2){
+			throw new Warning();
+		}
 		if(parameters.size() == 0){
 			nameFilter = "";
 		}

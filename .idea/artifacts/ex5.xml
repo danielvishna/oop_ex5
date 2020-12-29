@@ -13,7 +13,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/ErrorMissSubsection.java" />
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/Errors.java" />
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/ExecutableFilter.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/FileFilter.java" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/FileFilterName.java" />
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/FileOrder.java" />
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/Filter.java" />
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/FilterFactory.java" />
