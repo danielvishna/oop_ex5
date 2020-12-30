@@ -27,7 +27,6 @@ public class ExecutableFilter implements IFilter<String>{
 				else {
 					nameFilter = "YES";
 				}
-//				result = true;
 			}
 			else {
 				throw new Warning();
@@ -49,26 +48,6 @@ public class ExecutableFilter implements IFilter<String>{
 				}
 			}
 		}
-//		for(File f: files) {
-//			if(nameFilter.equals("YES")){
-//				if(f.isFile() && !f.canExecute() && result) {
-//					fileLinkedList.add(f);
-//				}
-//				else if (f.isFile() && !result && f.canExecute()) {
-//					fileLinkedList.add(f);
-//				}
-//			}
-//			else {
-//				if(f.isFile() && f.canExecute() && result) {
-//					fileLinkedList.add(f);
-//				}
-//				else if (f.isFile() && !result && !f.canExecute()) {
-//					fileLinkedList.add(f);
-//				}
-//			}
-//
-//
-//		}
 		return fileLinkedList;
 	}
 }

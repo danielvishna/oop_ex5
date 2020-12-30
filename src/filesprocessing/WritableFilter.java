@@ -12,7 +12,6 @@ public class WritableFilter implements IFilter<String>{
 			throw new Warning();
 		}
 		String isNot;
-//		boolean result = false;
 		File [] files = dir.listFiles();
 		String nameFilter = parameters.get(0);
 
@@ -30,7 +29,6 @@ public class WritableFilter implements IFilter<String>{
 				else {
 					nameFilter = "YES";
 				}
-//				result = true;
 			}
 			else {
 				throw new Warning();
@@ -45,30 +43,13 @@ public class WritableFilter implements IFilter<String>{
 				}
 			}
 		}
-		else{
-			for(File f: files) {
+		else {
+			for (File f : files) {
 				if (f.isFile() && !f.canWrite()) {
 					fileLinkedList.add(f);
 				}
 			}
 		}
-//		for(File f: files) {
-//			if(nameFilter.equals("YES")) {
-//				if (f.isFile() && !f.canWrite() && result) {
-//					fileLinkedList.add(f);
-//				} else if (f.isFile() && !result && f.canWrite()) {
-//					fileLinkedList.add(f);
-//				}
-//			}
-//			else {
-//				if (f.isFile() && f.canWrite() && result) {
-//					fileLinkedList.add(f);
-//				} else if (f.isFile() && !result && !f.canWrite()) {
-//					fileLinkedList.add(f);
-//				}
-//			}
-//
-//		}
 		return fileLinkedList;
 	}
 }

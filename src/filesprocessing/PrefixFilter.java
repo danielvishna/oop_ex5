@@ -7,7 +7,7 @@ import java.util.List;
 public class PrefixFilter implements IFilter<String>{
 	@Override
 	public List<File> filterFiles(File dir, List<String> parameters) throws Warning {
-		if(parameters.size() < 1 || parameters.size() > 2){//todo mau "" god prefix
+		if(parameters.size() < 1 || parameters.size() > 2){
 			throw new Warning();
 		}
 		String isNot;

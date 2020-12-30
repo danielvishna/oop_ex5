@@ -7,26 +7,26 @@ public class FileOrder {
 	/**
 	 * merge to part of array to one sort part
 	 * @param arr : array of Files
-	 * @param l
-	 * @param m
-	 * @param r
+	 * @param leftInd
+	 * @param middleInd
+	 * @param rightInd
 	 * @param compere
 	 * @param parameters
 	 * @throws Warning
 	 */
-	private void merge(File[] arr, int l, int m, int r, ICompere compere,  List<String> parameters)//todo
-			throws Warning {
-		int i1 = m - l + 1;
-		int i2 = r - m;
+	private void merge(File[] arr, int leftInd, int middleInd, int rightInd, ICompere compere,
+					   List<String> parameters) throws Warning { //todo
+		int i1 = middleInd - leftInd + 1;
+		int i2 = rightInd - middleInd;
 
 		/* Create temp arrays */
 		File[] L = new File[i1];
 		File[] R = new File[i2];
 
 
-		if (i1 >= 0) System.arraycopy(arr, l, L, 0, i1);
+		if (i1 >= 0) System.arraycopy(arr, leftInd, L, 0, i1);
 		for (int j = 0; j < i2; ++j)
-			R[j] = arr[m + 1 + j];
+			R[j] = arr[middleInd + 1 + j];
 
 
 		String isRevers;
@@ -40,7 +40,7 @@ public class FileOrder {
 		}
 
 		try {
-			int k = l;
+			int k = leftInd;
 			while (i < i1 && j < i2) {
 				if (result) {
 					if (compere.compereFiles(L[i], R[j]) > 0) {
@@ -81,30 +81,30 @@ public class FileOrder {
 		}
 	}
 
-	void sort(File[] arr, int l, int r, ICompere compere, List<String> parameters, int lineCount)
+	void sort(File[] arr, int leftInd, int rightInd, ICompere compere, List<String> parameters, int lineCount)
 	{
 		if(compere == null){
 			System.err.printf("Warning in line %s%n", lineCount);
 			String line = "abs";
-			List<String> parms = Utils.getFilterParameters(line);
-			AbsCompere defoult = new AbsCompere();
-			sort(arr, 0, arr.length - 1,defoult, parms.subList(1, parms.size()), lineCount);
+			List<String> params = Utils.getFilterParameters(line);
+			AbsCompere defaults = new AbsCompere();
+			sort(arr, 0, arr.length - 1, defaults, params.subList(1, params.size()), lineCount);
 		}
 		else {
 			try {
-				if (l < r) {
-					int m = (l + r) / 2;
-					sort(arr, l, m, compere, parameters, lineCount);
-					sort(arr, m + 1, r, compere, parameters, lineCount);
-					merge(arr, l, m, r, compere, parameters);
+				if (leftInd < rightInd) {
+					int m = (leftInd + rightInd) / 2;
+					sort(arr, leftInd, m, compere, parameters, lineCount);
+					sort(arr, m + 1, rightInd, compere, parameters, lineCount);
+					merge(arr, leftInd, m, rightInd, compere, parameters);
 				}
 			}
 			catch (Warning e) {
 				System.err.printf("Warning in line %s%n", lineCount);
 				String line = "abs";
-				List<String> parms = Utils.getFilterParameters(line);
+				List<String> params = Utils.getFilterParameters(line);
 				AbsCompere compere1 = new AbsCompere();
-				sort(arr, 0, arr.length - 1, compere1, parms.subList(1, parms.size()), lineCount);
+				sort(arr, 0, arr.length - 1, compere1, params.subList(1, params.size()), lineCount);
 
 			}
 		}

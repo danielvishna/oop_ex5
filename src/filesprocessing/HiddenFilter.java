@@ -12,7 +12,6 @@ public class HiddenFilter implements IFilter<String>{
 		}
 		int size = 0;
 		String isNot;
-		boolean result = false;
 		File [] files = dir.listFiles();
 		String nameFilter = parameters.get(0);
 		if (!nameFilter.equals("YES") && !nameFilter.equals("NO")){
@@ -28,7 +27,6 @@ public class HiddenFilter implements IFilter<String>{
 				else {
 					nameFilter = "YES";
 				}
-				//				result = true;
 			}
 			else {
 				throw new Warning();
@@ -50,30 +48,6 @@ public class HiddenFilter implements IFilter<String>{
 				}
 			}
 		}
-//		for(File f: files) {
-//			if(nameFilter.equals("YES")) {
-//				if (f.isFile() && !f.isHidden() && result) {
-//					fileLinkedList.add(f);
-//					size ++;
-//				}
-//				else if (f.isFile() && !result && f.isHidden()) {
-//					fileLinkedList.add(f);
-//					size ++;
-//				}
-//			}
-//			else {
-//				if (f.isFile() && f.isHidden() && result) {
-//					fileLinkedList.add(f);
-//					size ++;
-//				}
-//				else if (f.isFile() && !result && !f.isHidden()) {
-//					fileLinkedList.add(f);
-//					size ++;
-//				}
-//			}
-//
-//		}
-//		assert size == fileLinkedList.size();
 		return fileLinkedList;
 	}
 }
