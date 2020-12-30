@@ -1,4 +1,5 @@
-package filesprocessing;
+package filesprocessing.order;
+import filesprocessing.Utils;
 
 import java.io.File;
 import java.util.List;
@@ -12,10 +13,10 @@ public class FileOrder {
 	 * @param rightInd
 	 * @param compere
 	 * @param parameters
-	 * @throws Warning
+	 * @throws OrderWarning
 	 */
 	private void merge(File[] arr, int leftInd, int middleInd, int rightInd, ICompere compere,
-					   List<String> parameters) throws Warning { //todo
+					   List<String> parameters) throws OrderWarning { //todo
 		int i1 = middleInd - leftInd + 1;
 		int i2 = rightInd - middleInd;
 
@@ -77,11 +78,12 @@ public class FileOrder {
 			}
 		}
 		catch (NullPointerException e){
-			throw new Warning();
+			throw new OrderWarning();
 		}
 	}
 
-	void sort(File[] arr, int leftInd, int rightInd, ICompere compere, List<String> parameters, int lineCount)
+	public void sort(File[] arr, int leftInd, int rightInd, ICompere compere, List<String> parameters,
+					 int lineCount)
 	{
 		if(compere == null){
 			System.err.printf("Warning in line %s%n", lineCount);
@@ -99,7 +101,7 @@ public class FileOrder {
 					merge(arr, leftInd, m, rightInd, compere, parameters);
 				}
 			}
-			catch (Warning e) {
+			catch (OrderWarning e) {
 				System.err.printf("Warning in line %s%n", lineCount);
 				String line = "abs";
 				List<String> params = Utils.getFilterParameters(line);

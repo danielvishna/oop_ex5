@@ -1,22 +1,24 @@
-package filesprocessing;
+package filesprocessing.filter;
 
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ExecutableFilter implements IFilter<String>{
+public class WritableFilter implements IFilter<String>{
+
 	@Override
-	public List<File> filterFiles(File dir, List<String> parameters) throws Warning {
+	public List<File> filterFiles(File dir, List<String> parameters) throws FilterWarning {
+		if(parameters.size() < 1 || parameters.size() > 2){
+			throw new FilterWarning();
+		}
 		String isNot;
-		boolean result = false;
 		File [] files = dir.listFiles();
-		if(parameters.size() > 2 || parameters.size() == 0){
-			throw  new Warning();
-		}
 		String nameFilter = parameters.get(0);
+
 		if (!nameFilter.equals("YES") && !nameFilter.equals("NO")){
-			throw new Warning();
+			throw new FilterWarning();
 		}
+
 		LinkedList<File> fileLinkedList = new LinkedList<>();
 		if (parameters.size() == 2) {
 			isNot = parameters.get(1);
@@ -29,21 +31,21 @@ public class ExecutableFilter implements IFilter<String>{
 				}
 			}
 			else {
-				throw new Warning();
+				throw new FilterWarning();
 			}
 		}
 		if (files == null)
 			return fileLinkedList;
 		if(nameFilter.equals("YES")){
 			for(File f: files) {
-				if (f.isFile() && f.canExecute()) {
+				if (f.isFile() && f.canWrite()) {
 					fileLinkedList.add(f);
 				}
 			}
 		}
-		else{
-			for(File f: files) {
-				if (f.isFile() && !f.canExecute()) {
+		else {
+			for (File f : files) {
+				if (f.isFile() && !f.canWrite()) {
 					fileLinkedList.add(f);
 				}
 			}

@@ -1,5 +1,8 @@
 package filesprocessing;
 
+import filesprocessing.order.*;
+import filesprocessing.filter.*;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package filesprocessing;
+package filesprocessing.filter;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -7,13 +7,13 @@ import java.util.List;
 public class ContainsFilter implements IFilter<String> {
 
 	@Override
-	public List<File> filterFiles(File dir, List<String> parameters) throws Warning {
+	public List<File> filterFiles(File dir, List<String> parameters) throws FilterWarning {
 		String isNot;
 		boolean result = false;
 		File [] files = dir.listFiles();
 		String nameFilter;
 		if(parameters.size() > 2){
-			throw new Warning();
+			throw new FilterWarning();
 		}
 		if(parameters.size() == 0){
 			nameFilter = "";
@@ -28,7 +28,7 @@ public class ContainsFilter implements IFilter<String> {
 				result = true;
 			}
 			else {
-				throw new Warning();
+				throw new FilterWarning();
 			}
 		}
 		if (files == null)

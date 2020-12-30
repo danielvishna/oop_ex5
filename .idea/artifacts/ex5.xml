@@ -3,36 +3,41 @@
     <output-path>$PROJECT_DIR$/out/artifacts/ex5</output-path>
     <root id="archive" name="ex5.jar">
       <element id="directory" name="filesprocessing">
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/DirectoryProcessor.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/AbsCompere.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/AllFilter.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/BetweenFilter.java" />
+        <element id="directory" name="filter">
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/AllFilter.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/BetweenFilter.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/ContainsFilter.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/ExecutableFilter.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/FileFilterName.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/Filter.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/FilterFactory.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/FilterWarning.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/GreaterThanFilter.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/HiddenFilter.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/IFilter.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/PrefixFilter.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/SmallerThanFilter.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/SuffixFilter.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/filter/WritableFilter.java" />
+        </element>
+        <element id="directory" name="order">
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/order/AbsCompere.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/order/Compere.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/order/FileOrder.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/order/ICompere.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/order/NameComparison.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/order/OrderFactory.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/order/OrderWarning.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/order/SizeCompere.java" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/order/TypeCompere.java" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/Warning.java" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/Utils.java" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/UsageError.java" />
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/Command.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/Compere.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/ContainsFilter.java" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/DirectoryProcessor.java" />
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/ErrorMissSubsection.java" />
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/Errors.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/ExecutableFilter.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/FileFilterName.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/FileOrder.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/Filter.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/FilterFactory.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/GreaterThanFilter.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/HiddenFilter.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/ICompere.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/IFilter.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/NameComparison.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/OrderFactory.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/PrefixFilter.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/SizeCompere.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/SmallerThanFilter.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/SubsectionError.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/SuffixFilter.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/TypeCompere.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/UsageError.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/Utils.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/Warning.java" />
-        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/WritableFilter.java" />
       </element>
       <element id="file-copy" path="$PROJECT_DIR$/src/README" />
     </root>

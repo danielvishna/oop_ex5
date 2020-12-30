@@ -1,4 +1,4 @@
-package filesprocessing;
+package filesprocessing.filter;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -9,14 +9,14 @@ import static filesprocessing.Utils.BytSize;
 public class GreaterThanFilter implements IFilter<String> {
 
 	@Override
-	public List<File> filterFiles(File dir, List<String> parameters) throws Warning {
+	public List<File> filterFiles(File dir, List<String> parameters) throws FilterWarning {
 		if(parameters.size() < 1 || parameters.size() > 2){
-			throw new Warning();
+			throw new FilterWarning();
 		}
 		File [] files = dir.listFiles();
 		double size = Double.parseDouble(parameters.get(0));
 		if (size < 0){
-			throw new Warning();
+			throw new FilterWarning();
 		}
 		String isNot;
 		boolean result = false;
@@ -27,7 +27,7 @@ public class GreaterThanFilter implements IFilter<String> {
 				result = true;
 			}
 			else {
-				throw new Warning();
+				throw new FilterWarning();
 			}
 		}
 		if (files == null)

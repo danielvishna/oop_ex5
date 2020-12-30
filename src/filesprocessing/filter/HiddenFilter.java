@@ -1,4 +1,4 @@
-package filesprocessing;
+package filesprocessing.filter;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -6,16 +6,16 @@ import java.util.List;
 
 public class HiddenFilter implements IFilter<String>{
 	@Override
-	public List <File> filterFiles(File dir, List<String> parameters) throws Warning {
+	public List <File> filterFiles(File dir, List<String> parameters) throws FilterWarning {
 		if(parameters.size() < 1 || parameters.size() > 2){
-			throw new Warning();
+			throw new FilterWarning();
 		}
 		int size = 0;
 		String isNot;
 		File [] files = dir.listFiles();
 		String nameFilter = parameters.get(0);
 		if (!nameFilter.equals("YES") && !nameFilter.equals("NO")){
-			throw new Warning();
+			throw new FilterWarning();
 		}
 		LinkedList<File> fileLinkedList = new LinkedList<>();
 		if (parameters.size() == 2) {
@@ -29,7 +29,7 @@ public class HiddenFilter implements IFilter<String>{
 				}
 			}
 			else {
-				throw new Warning();
+				throw new FilterWarning();
 			}
 		}
 		if (files == null)

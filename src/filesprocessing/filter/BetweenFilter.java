@@ -1,4 +1,4 @@
-package filesprocessing;
+package filesprocessing.filter;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -8,15 +8,15 @@ import static filesprocessing.Utils.BytSize;
 
 public class BetweenFilter implements IFilter<String>{
 	@Override
-	public List<File> filterFiles(File dir, List<String> parameters) throws Warning {
+	public List<File> filterFiles(File dir, List<String> parameters) throws FilterWarning {
 		File [] files = dir.listFiles();
 		if(parameters.size() > 3 || parameters.size() < 2){
-			throw new Warning();
+			throw new FilterWarning();
 		}
 		double low = Double.parseDouble(parameters.get(0));
 		double greater = Double.parseDouble(parameters.get(1));
 		if (low < 0 || low > greater || greater < 0){
-			throw new Warning();
+			throw new FilterWarning();
 		}
 		String isNot;
 		boolean result = false;
@@ -27,7 +27,7 @@ public class BetweenFilter implements IFilter<String>{
 				result = true;
 			}
 			else {
-				throw new Warning();
+				throw new FilterWarning();
 			}
 		}
 		if (files == null)

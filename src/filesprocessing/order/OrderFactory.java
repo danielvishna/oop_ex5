@@ -1,4 +1,4 @@
-package filesprocessing;
+package filesprocessing.order;
 
 public class OrderFactory {
 	/**

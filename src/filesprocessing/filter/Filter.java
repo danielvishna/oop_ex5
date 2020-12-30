@@ -1,4 +1,4 @@
-package filesprocessing;
+package filesprocessing.filter;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -25,7 +25,7 @@ public class Filter {
 	public List<File> filterFiles(File dir, List<String> parameters, int lineCount) {
 		try {
 			return this.filter.filterFiles(dir, parameters);
-		} catch (NullPointerException | Warning e) {
+		} catch (NullPointerException | FilterWarning e) {
 			System.err.printf("Warning in line %s%n", lineCount);
 			LinkedList<File> fileLinkedList = new LinkedList<>();
 			File [] files = dir.listFiles();

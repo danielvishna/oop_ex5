@@ -1,19 +1,26 @@
-package filesprocessing;
+package filesprocessing.filter;
 
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PrefixFilter implements IFilter<String>{
+public class SuffixFilter implements IFilter<String>{
+
 	@Override
-	public List<File> filterFiles(File dir, List<String> parameters) throws Warning {
+	public List<File> filterFiles(File dir, List<String> parameters) throws FilterWarning {
 		if(parameters.size() < 1 || parameters.size() > 2){
-			throw new Warning();
+			throw new FilterWarning();
 		}
 		String isNot;
 		boolean result = false;
 		File [] files = dir.listFiles();
-		String nameFilter = parameters.get(0);
+		String nameFilter;
+		if(parameters.size() == 0){
+			nameFilter = "";
+		}
+		else {
+			nameFilter = parameters.get(0);
+		}
 		LinkedList<File> fileLinkedList = new LinkedList<>();
 		if (parameters.size() == 2) {
 			isNot = parameters.get(1);
@@ -21,16 +28,16 @@ public class PrefixFilter implements IFilter<String>{
 				result = true;
 			}
 			else {
-				throw new Warning();
+				throw new FilterWarning();
 			}
 		}
 		if (files == null)
 			return fileLinkedList;
 		for(File f: files) {
-			if(f.isFile() && !f.getName().startsWith(nameFilter) && result) {
+			if(f.isFile() && !f.getName().endsWith(nameFilter) && result) {
 				fileLinkedList.add(f);
 			}
-			else if (f.isFile() && f.getName().startsWith(nameFilter) && !result) {
+			else if (f.isFile() && f.getName().endsWith(nameFilter) && !result) {
 				fileLinkedList.add(f);
 			}
 
