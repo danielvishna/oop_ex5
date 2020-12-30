@@ -1,6 +1,8 @@
 package filesprocessing;
 
-// exceptions of missing subsection
+/**
+ * exceptions of missing subsection
+ */
 public class ErrorMissSubsection extends Errors{
 	/**
 	 * exceptions of missing subsection

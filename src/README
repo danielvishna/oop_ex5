@@ -5,9 +5,14 @@ daniel.vishna
 =============================
 =      File description     =
 =============================
-Book.java - implements the Library class.
-Library.java - implements the Library class.
-Patron.java - implements the Patron class.
+Command.java - object that represent one Command of filter and order in file
+DirectoryProcessor.java -  The main class here I get the dir and I filter sort the files
+Utils.java - service functions class of the package
+ErrorMissSubsection	- exceptions of missing subsection
+Errors	- exception of error in the given file
+SubsectionError - exception if there miss part in the commend file
+UsageError - excision of error if we don't get the 2 argument to the program
+Warning	- excision if the is something in the file that doesn't fit to what we need
 
 
 

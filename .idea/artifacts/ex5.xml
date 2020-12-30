@@ -38,6 +38,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/DirectoryProcessor.java" />
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/ErrorMissSubsection.java" />
         <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/Errors.java" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/filesprocessing/SubsectionError.java" />
       </element>
       <element id="file-copy" path="$PROJECT_DIR$/src/README" />
     </root>

@@ -13,21 +13,20 @@ public class FileOrder {
 	 * @param rightInd
 	 * @param compere
 	 * @param parameters
-	 * @throws OrderWarning
+	 * @throws OrderWarning : worning if there is problem in
 	 */
 	private void merge(File[] arr, int leftInd, int middleInd, int rightInd, ICompere compere,
-					   List<String> parameters) throws OrderWarning { //todo
+					   List<String> parameters) throws OrderWarning {
 		int i1 = middleInd - leftInd + 1;
 		int i2 = rightInd - middleInd;
 
-		/* Create temp arrays */
-		File[] L = new File[i1];
-		File[] R = new File[i2];
+		File[] leftArr = new File[i1];
+		File[] rightArr = new File[i2];
 
 
-		if (i1 >= 0) System.arraycopy(arr, leftInd, L, 0, i1);
+		if (i1 >= 0) System.arraycopy(arr, leftInd, leftArr, 0, i1);
 		for (int j = 0; j < i2; ++j)
-			R[j] = arr[middleInd + 1 + j];
+			rightArr[j] = arr[middleInd + 1 + j];
 
 
 		String isRevers;
@@ -44,38 +43,40 @@ public class FileOrder {
 			int k = leftInd;
 			while (i < i1 && j < i2) {
 				if (result) {
-					if (compere.compereFiles(L[i], R[j]) > 0) {
-						arr[k] = L[i];
+					if (compere.compereFiles(leftArr[i], rightArr[j]) > 0) {
+						arr[k] = leftArr[i];
 						i++;
 					} else {
-						arr[k] = R[j];
+						arr[k] = rightArr[j];
 						j++;
 					}
 				}
 				else {
-					if (compere.compereFiles(L[i], R[j]) < 0) {
-						arr[k] = L[i];
+					if (compere.compereFiles(leftArr[i], rightArr[j]) < 0) {
+						arr[k] = leftArr[i];
 						i++;
 					}
 					else {
-						arr[k] = R[j];
+						arr[k] = rightArr[j];
 						j++;
 					}
 				}
 				k++;
 			}
 
+			while (j < i2) {
+				arr[k] = rightArr[j];
+				j++;
+				k++;
+			}
+
 			while (i < i1) {
-				arr[k] = L[i];
+				arr[k] = leftArr[i];
 				i++;
 				k++;
 			}
 
-			while (j < i2) {
-				arr[k] = R[j];
-				j++;
-				k++;
-			}
+
 		}
 		catch (NullPointerException e){
 			throw new OrderWarning();
@@ -95,10 +96,10 @@ public class FileOrder {
 		else {
 			try {
 				if (leftInd < rightInd) {
-					int m = (leftInd + rightInd) / 2;
-					sort(arr, leftInd, m, compere, parameters, lineCount);
-					sort(arr, m + 1, rightInd, compere, parameters, lineCount);
-					merge(arr, leftInd, m, rightInd, compere, parameters);
+					int middleInd = (leftInd + rightInd) / 2;
+					sort(arr, leftInd, middleInd, compere, parameters, lineCount);
+					sort(arr, middleInd + 1, rightInd, compere, parameters, lineCount);
+					merge(arr, leftInd, middleInd, rightInd, compere, parameters);
 				}
 			}
 			catch (OrderWarning e) {

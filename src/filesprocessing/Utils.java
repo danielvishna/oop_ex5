@@ -3,6 +3,9 @@ package filesprocessing;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * service functions class of the package
+ */
 public class Utils {
 	public static final double BytSize = 1024;
 

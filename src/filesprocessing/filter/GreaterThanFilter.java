@@ -6,23 +6,32 @@ import java.util.List;
 
 import static filesprocessing.Utils.BytSize;
 
+/**
+ * Filter all the files in the given dir that there size are greater the given number
+ */
 public class GreaterThanFilter implements IFilter<String> {
+	static final int BAD_BIG_SIZE_PARM = 2;
+	static final int BAD_SMALL_SIZE_PARM = 1;
+	static final int SIZE_PARM_WITH_NOT = 2;
+	static final int FIRST_PARM = 0;
+	static final int SEC_PARM = 1;
+	static final double BAD_NAM_BOND = 0;
 
 	@Override
 	public List<File> filterFiles(File dir, List<String> parameters) throws FilterWarning {
-		if(parameters.size() < 1 || parameters.size() > 2){
+		if(parameters.size() < BAD_SMALL_SIZE_PARM || parameters.size() > BAD_BIG_SIZE_PARM){
 			throw new FilterWarning();
 		}
 		File [] files = dir.listFiles();
-		double size = Double.parseDouble(parameters.get(0));
-		if (size < 0){
+		double size = Double.parseDouble(parameters.get(FIRST_PARM));
+		if (size < BAD_NAM_BOND){
 			throw new FilterWarning();
 		}
 		String isNot;
 		boolean result = false;
 		LinkedList<File> fileLinkedList = new LinkedList<>();
-		if (parameters.size() == 2) {
-			isNot = parameters.get(1);
+		if (parameters.size() == SIZE_PARM_WITH_NOT) {
+			isNot = parameters.get(SEC_PARM);
 			if (isNot.equals("NOT")) {
 				result = true;
 			}

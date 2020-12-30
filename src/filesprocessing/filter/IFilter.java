@@ -1,7 +1,5 @@
 package filesprocessing.filter;
 
-import filesprocessing.Warning;
-
 import java.io.File;
 import java.util.List;
 
