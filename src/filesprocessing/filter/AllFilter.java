@@ -8,9 +8,8 @@ import java.util.List;
  * Filter that return all the files in the give dir or noting
  */
 public class AllFilter implements IFilter<String>{
-	static final int BAD_BIG_SIZE_PARM = 3;
-	static final int BAD_SMALL_SIZE_PARM = 2;
-	static final int SIZE_PARM_WITH_NOT = 3;
+	static final int BAD_BIG_SIZE_PARM = 2;
+	static final int SIZE_PARM_WITH_NOT = 1;
 	static final int FIRST_PARM = 0;
 
 	@Override
@@ -18,7 +17,7 @@ public class AllFilter implements IFilter<String>{
 		File [] files = dir.listFiles();
 		String isNot;
 		boolean result = false;
-		if (parameters.size() > BAD_BIG_SIZE_PARM || parameters.size() < BAD_SMALL_SIZE_PARM)
+		if (parameters.size() > BAD_BIG_SIZE_PARM)
 		{
 			throw new FilterWarning();
 		}

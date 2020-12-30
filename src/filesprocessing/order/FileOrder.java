@@ -4,44 +4,50 @@ import filesprocessing.Utils;
 import java.io.File;
 import java.util.List;
 
+/**
+ * create structure of sorted files by given way to compere to files
+ */
 public class FileOrder {
+	static final int SIZE_WITH_REVERS = 1;
+	static final int FIRST_PARM = 0;
+
 	/**
 	 * merge to part of array to one sort part
 	 * @param arr : array of Files
-	 * @param leftInd
-	 * @param middleInd
-	 * @param rightInd
-	 * @param compere
-	 * @param parameters
-	 * @throws OrderWarning : worning if there is problem in
+	 * @param leftBound the left bound of the unsort part we work on now
+	 * @param runInd the run index of the merge say where to start look right and left
+	 * @param rightBound the right bound of the unsort part we work on now
+	 * @param compere the IComper object the get the order between the 2 files
+	 * @param parameters the parameters of the commend the told as how to sort the files
+	 * @throws OrderWarning : warning if there is problem in
 	 */
-	private void merge(File[] arr, int leftInd, int middleInd, int rightInd, ICompere compere,
+	private void merge(File[] arr, int leftBound, int runInd, int rightBound, ICompere compere,
 					   List<String> parameters) throws OrderWarning {
-		int i1 = middleInd - leftInd + 1;
-		int i2 = rightInd - middleInd;
+		int leftArrInd = runInd - leftBound + 1;
+		int rightArrInd = rightBound - runInd;
 
-		File[] leftArr = new File[i1];
-		File[] rightArr = new File[i2];
+		File[] leftArr = new File[leftArrInd];
+		File[] rightArr = new File[rightArrInd];
 
 
-		if (i1 >= 0) System.arraycopy(arr, leftInd, leftArr, 0, i1);
-		for (int j = 0; j < i2; ++j)
-			rightArr[j] = arr[middleInd + 1 + j];
+		if (leftArrInd >= 0) System.arraycopy(arr, leftBound, leftArr, 0, leftArrInd);
+		for (int j = 0; j < rightArrInd; j++)
+			rightArr[j] = arr[runInd + 1 + j];
 
 
 		String isRevers;
 		boolean result = false;
 		int i = 0, j = 0;
-		if (parameters.size() == 1) {
-			isRevers = parameters.get(0);
+		if (parameters.size() == SIZE_WITH_REVERS) {
+			isRevers = parameters.get(FIRST_PARM);
 			if (isRevers.equals("REVERSE")) {
 				result = true;
 			}
 		}
 
 		try {
-			int k = leftInd;
-			while (i < i1 && j < i2) {
+			int k = leftBound;
+			while (i < leftArrInd && j < rightArrInd) {
 				if (result) {
 					if (compere.compereFiles(leftArr[i], rightArr[j]) > 0) {
 						arr[k] = leftArr[i];
@@ -64,13 +70,13 @@ public class FileOrder {
 				k++;
 			}
 
-			while (j < i2) {
+			while (j < rightArrInd) {
 				arr[k] = rightArr[j];
 				j++;
 				k++;
 			}
 
-			while (i < i1) {
+			while (i < leftArrInd) {
 				arr[k] = leftArr[i];
 				i++;
 				k++;

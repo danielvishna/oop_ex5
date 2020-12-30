@@ -3,6 +3,10 @@ package filesprocessing.filter;
 import java.io.File;
 import java.util.List;
 
+/**
+ * interface of filters this
+ * @param <String> - the parameters of how to do the filtering
+ */
 public interface IFilter<String> {
 	/**
 	 * filter all the file in given dir

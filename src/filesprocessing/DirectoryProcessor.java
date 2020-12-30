@@ -20,6 +20,8 @@ public class DirectoryProcessor {
 	static final int INX_DIR = 0;
 	static final int INX_COMMAND_FILE = 1;
 	static final int NUM_OF_ARGS = 2;
+	static final int SIZE_WITH_REVERS = 2;
+	static final int FIRST_PARM = 2;
 	static final String DEFAULT_ORDER = "abs";
 
 	/**

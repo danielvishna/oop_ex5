@@ -2,11 +2,14 @@ package filesprocessing.order;
 
 import java.io.File;
 
+/**
+ * the class of the Strategy Pattern that call to all the orders
+ */
 public class Compere {
 	private final ICompere compere;
 
 	/**
-	 * creat the Compere object
+	 * create the Compere object
 	 * @param compere ICompere filed
 	 */
 	public Compere(ICompere compere){

@@ -1,5 +1,8 @@
 package filesprocessing.filter;
 
+/**
+ * Factory of Filter create all the filters
+ */
 public class FilterFactory {
 	/**
 	 * Filter Factory create the filter object that filter thr files at the dir

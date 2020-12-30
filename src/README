@@ -8,11 +8,34 @@ daniel.vishna
 Command.java - object that represent one Command of filter and order in file
 DirectoryProcessor.java -  The main class here I get the dir and I filter sort the files
 Utils.java - service functions class of the package
-ErrorMissSubsection	- exceptions of missing subsection
-Errors	- exception of error in the given file
-SubsectionError - exception if there miss part in the commend file
-UsageError - excision of error if we don't get the 2 argument to the program
-Warning	- excision if the is something in the file that doesn't fit to what we need
+ErrorMissSubsection.java	- exceptions of missing subsection
+Errors.java	- exception of error in the given file
+SubsectionError.java - exception if there miss part in the commend file
+UsageError.java - excision of error if we don't get the 2 argument to the program
+Warning.java	- excision if the is something in the file that doesn't fit to what we need
+AllFilter.java - Filter that return all the files in the give dir or noting
+BetweenFilter.java - Filter all the files in the given dir that there size are between to numbers: the smaller
+ number and the greater number
+ContainsFilter.java - Filter all the files that counting given string
+ExecutableFilter.java - Filter all the files that are executable or not executable
+FileFilterName.java - Filter all the files that have exactly a specific name
+Filter.java - the class of the Strategy Pattern that call to all the filters
+FilterFactory.java - Factory of Filter create all the filters
+GreaterThanFilter.java - Filter all the files in the given dir that there size are greater the given number
+HiddenFilter.java - Filter all the files that are hidden or unhidden
+PrefixFilter.java - Filter all the files that there name start with given string or not start
+SmallerThanFilter.java - Filter all the files in the given dir that there size are smaller the given number
+SuffixFilter.java - Filter all the files that there name end with given string or not start
+WritableFilter.jav - Filter all the files that are writable or not executable
+FilterWarning.java - Warning if the commend of the filter is illegal
+IFilter.java - interface of filters this
+AbsCompere.java	- Get the order between 2 files by there names
+Compere.java - the class of the Strategy Pattern that call to all the orders
+FileOrder.java - create structure of sorted files by given way to compere to files
+OrderFactory.java - Factory of Order create all the orders
+SizeCompere.java - Get the order between 2 files by there size
+TypeCompere.java - Get the order between 2 files by there type
+OrderWarning.java - Warning if the commend of the order is illegal
 
 
 

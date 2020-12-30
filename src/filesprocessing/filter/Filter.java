@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * the class of the Strategy Pattern that call to all the filters
+ */
 public class Filter {
 	private final IFilter<String> filter;
 

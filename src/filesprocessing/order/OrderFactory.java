@@ -1,5 +1,8 @@
 package filesprocessing.order;
 
+/**
+ * Factory of Order create all the orders
+ */
 public class OrderFactory {
 	/**
 	 * Order Factory creat the order we wont to set

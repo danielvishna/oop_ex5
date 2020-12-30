@@ -2,6 +2,9 @@ package filesprocessing.order;
 
 import java.io.File;
 
+/**
+ * interface of comparing files
+ */
 public interface ICompere {
 	/**
 	 * interface of compere 2 files

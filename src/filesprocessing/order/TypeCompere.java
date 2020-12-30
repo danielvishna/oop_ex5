@@ -2,6 +2,9 @@ package filesprocessing.order;
 import java.lang.*;
 import java.io.File;
 
+/**
+ * Get the order between 2 files by there type
+ */
 public class TypeCompere implements ICompere{
 	@Override
 	public int compereFiles(File file1, File file2) {
