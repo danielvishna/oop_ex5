@@ -42,16 +42,35 @@ OrderWarning.java - Warning if the commend of the order is illegal
 =============================
 =          Design           =
 =============================
-In general I implement 3 different class that represent 3 different object.
-There connection between the class in that way Library has contain the patrons and books.
-each class is stand alon and can use any other calls that implement the same API.
+I use the strategy design pattern to handle all the order and filter of the files.
+For call each order or filer I create a interface of IComper for the order and IFilter for the flirts.
+each order or filter are implement in class that implement the fit interface
+ methode of order or filter that hve in the interface.
+ When I wont to use the order or filter I call Compere.java or Filter.java this files Operators the commend
+  by that I send them object the is IComper or IFilter.
+To create the strategy design pattern I use factory to create each Order object and Filter object.
+
 
 
 =============================
 =  Implementation details   =
 =============================
-In the Library I chose to implement 3 arrays that store the Books,Patrons and how mach books each
-patron is borrow from the library.
+The exceptions hierarchy:
+I chose to create 2 big kinds of exception one for errors and one for warning.
+The warning and the errors are  master class the are extend by other class.
+This give me the the power to create special exceptions but to be abel to catch them as the master class
+in the main
+class the this not important what exactly is the exceptions but I wont to print the exceptions message and to
+do the same thing to all the extend class of warning and errors.
+
+Sort the matched files:
+I choose to implement  merge sort for sort the matched files.
+The classic merge sort use array to move all the data and sort this,
+so for the sort I use array of files so I can sort all the files quickly.
+Anther reason why I use array is that for filter all the files I used list so convert list to array in java is
+easy job.
+
+
 
 =============================
 =    Answers to questions   =
